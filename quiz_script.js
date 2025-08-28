@@ -177,6 +177,9 @@ function showLeadForm() {
     leadForm.classList.add('active');
     document.querySelector('.show-form-button').style.display = 'none';
     
+    // Pre-populate form with quiz data if possible
+    populateMailchimpForm();
+    
     // Scroll to form smoothly
     setTimeout(() => {
         leadForm.scrollIntoView({ 
@@ -186,120 +189,24 @@ function showLeadForm() {
     }, 100);
 }
 
-function handleFormSubmit(event) {
-    event.preventDefault();
-    
-    const formData = new FormData(event.target);
-    const leadData = {
-        firstName: formData.get('firstName'),
-        lastName: formData.get('lastName'),
-        email: formData.get('email'),
-        company: formData.get('company'),
-        title: formData.get('title'),
-        phone: formData.get('phone'),
-        recommendedProfile: window.quizProfile,
-        profileScores: window.profileScores,
-        quizAnswers: window.quizAnswers,
-        timestamp: new Date().toISOString()
-    };
-
-    // Integration points for CRM/Marketing automation
-    console.log('Lead data ready for integration:', leadData);
-    
-    // Example integrations (commented out - replace with actual endpoints):
-    /*
-    // HubSpot form submission
-    const hubspotFormData = new FormData();
-    hubspotFormData.append('firstname', leadData.firstName);
-    hubspotFormData.append('lastname', leadData.lastName);
-    hubspotFormData.append('email', leadData.email);
-    hubspotFormData.append('company', leadData.company);
-    hubspotFormData.append('jobtitle', leadData.title);
-    hubspotFormData.append('phone', leadData.phone);
-    hubspotFormData.append('ai_infrastructure_profile', leadData.recommendedProfile);
-    
-    fetch('https://api.hsforms.com/submissions/v3/integration/submit/YOUR_PORTAL_ID/YOUR_FORM_ID', {
-        method: 'POST',
-        body: hubspotFormData
-    });
-    
-    // Salesforce Lead creation
-    fetch('/api/salesforce/leads', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(leadData)
-    });
-    
-    // Marketing automation tracking
-    gtag('event', 'quiz_completion', {
-        event_category: 'AI Infrastructure Assessment',
-        event_label: leadData.recommendedProfile,
-        custom_parameters: {
-            company: leadData.company,
-            job_title: leadData.title,
-            infrastructure_profile: leadData.recommendedProfile
-        }
-    });
-    */
-
-    // Simulate form submission with enhanced UX
-    const submitButton = event.target.querySelector('.cta-button');
-    const originalText = submitButton.textContent;
-    
-    submitButton.innerHTML = `
-        <span style="display: inline-flex; align-items: center; gap: 0.5rem;">
-            <span style="animation: spin 1s linear infinite; display: inline-block;">⏳</span>
-            Scheduling Your Strategy Session...
-        </span>
-    `;
-    submitButton.disabled = true;
-    submitButton.style.opacity = '0.8';
-
-    // Add spinning animation
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-    `;
-    document.head.appendChild(style);
-
-    setTimeout(() => {
-        // Success state
-        submitButton.innerHTML = `
-            <span style="display: inline-flex; align-items: center; gap: 0.5rem;">
-                ✅ Strategy Session Scheduled Successfully!
-            </span>
-        `;
-        submitButton.style.background = '#4CAF50';
-        submitButton.style.opacity = '1';
+function populateMailchimpForm() {
+    // Store quiz results in the form for potential follow-up
+    const form = document.getElementById('mc-embedded-subscribe-form');
+    if (form && window.quizProfile) {
+        // Add hidden field for quiz profile
+        const profileField = document.createElement('input');
+        profileField.type = 'hidden';
+        profileField.name = 'PROFILE';
+        profileField.value = window.quizProfile;
+        form.appendChild(profileField);
         
-        // Show success message
-        const successMessage = document.createElement('div');
-        successMessage.style.cssText = `
-            background: #4CAF50;
-            color: white;
-            padding: 1.5rem;
-            border-radius: 12px;
-            margin-top: 1.5rem;
-            text-align: center;
-            font-weight: 600;
-            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.3);
-        `;
-        successMessage.innerHTML = `
-            <h4 style="margin: 0 0 0.5rem 0; font-size: 1.3rem; text-transform: uppercase; letter-spacing: 1px;">🎉 Thank You!</h4>
-            <p style="margin: 0; opacity: 0.95;">Your infrastructure strategy session has been scheduled. Our experts will contact you within 24 hours to discuss your ${window.quizProfile.toUpperCase()} infrastructure approach and next steps.</p>
-        `;
-        
-        event.target.appendChild(successMessage);
-        
-        // In a real implementation, redirect to a thank you page
-        // setTimeout(() => {
-        //     window.location.href = `/thank-you?profile=${window.quizProfile}`;
-        // }, 3000);
-        
-    }, 2500);
+        // Add hidden field for quiz scores
+        const scoresField = document.createElement('input');
+        scoresField.type = 'hidden';
+        scoresField.name = 'SCORES';
+        scoresField.value = JSON.stringify(window.profileScores);
+        form.appendChild(scoresField);
+    }
 }
 
 // Add keyboard navigation for accessibility
