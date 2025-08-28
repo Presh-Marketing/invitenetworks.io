@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Infrastructure Readiness Score Quiz | INVITE Networks</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <div class="quiz-header">
+            <div class="header-ribbon"></div>
+            <div class="invite-branding">INVITE Networks</div>
+            <h1>AI Infrastructure Readiness Assessment</h1>
+            <p><strong>Discover your optimal AI infrastructure strategy in 3 minutes.</strong> Whether you need DIY flexibility, enterprise-grade solutions, or fully managed infrastructure — get personalized recommendations based on your use case, capabilities, and risk profile.</p>
+            
+            <div class="feature-highlights">
+                <div class="feature-highlights-content">
+                    <span>✅ Strategy Assessment</span>
+                    <span>✅ Infrastructure Recommendations</span>
+                    <span>✅ Next Steps Guidance</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-text" id="progressText">Question 1 of 8</div>
+        </div>
+
+        <div class="quiz-content">
+            <!-- Question 1 -->
+            <div class="question-slide active" data-question="1">
+                <h2 class="question-title">What best describes your current AI initiative goals?</h2>
+                <div class="answer-options">
+                    <div class="answer-option">
+                        <input type="radio" id="q1a1" name="q1" value="diy">
+                        <label for="q1a1">Exploring AI use cases and assessing feasibility</label>
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" id="q1a2" name="q1" value="diy">
+                        <label for="q1a2">Testing pilots or Proofs-of-Concept (PoCs)</label>
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" id="q1a3" name="q1" value="enterprise">
+                        <label for="q1a3">Scaling targeted AI applications</label>
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" id="q1a4" name="q1" value="enterprise">
+                        <label for="q1a4">Implementing organization-wide AI strategies</label>
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" id="q1a5" name="q1" value="managed">
+                        <label for="q1a5">Optimizing production AI systems critical to operations</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question-slide" data-question="2">
+                <h2 class="question-title">How would you describe your current GPU and compute strategy for AI workloads? (Current or planned workloads?)</h2>
+                <div class="answer-options">
+                    <div class="answer-option">
+                        <input type="radio" id="q2a1" name="q2" value="managed">
+                        <label for="q2a1">No defined strategy yet / Still developing our strategy</label>
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" id="q2a2" name="q2" value="managed">
+                        <label for="q2a2">Shared cloud instances with performance bottlenecks or cost challenges</label>
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" id="q2a3" name="q2" value="enterprise">
+                        <label for="q2a3">Hybrid cloud and on-premise setup with limited GPU resources</label>
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" id="q2a4" name="q2" value="enterprise">
+                        <label for="q2a4">Dedicated GPU clusters with performance or scalability issues</label>
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" id="q2a5" name="q2" value="diy">
+                        <label for="q2a5">High-Performance Compute with some integration gaps</label>
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" id="q2a6" name="q2" value="diy">
+                        <label for="q2a6">Fully optimized AI infrastructure</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question-slide" data-question="3">
+                <h2 class="question-title">What's your biggest infrastructure pain point with AI workloads? (Current or planned workloads?)</h2>
+                <div class="answer-options">
+                    <div class="answer-option">
+                        <input type="radio" id="q3a1" name="q3" value="managed">
+                        <label for="q3a1">Network performance issues</label>
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" id="q3a2" name="q3" value="managed">
+                        <label for="q3a2">Storage performance for AI data processing</label>
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" id="q3a3" name="q3" value="enterprise">
+                        <label for="q3a3">Data access/silos</label>
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" id="q3a4" name="q3" value="enterprise">
+                        <label for="q3a4">Inconsistent AI performance across on-prem, hybrid, or cloud setups</label>
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" id="q3a5" name="q3" value="enterprise">
+                        <label for="q3a5">Lack of visibility into AI workload performance</label>
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" id="q3a6" name="q3" value="diy">
+                        <label for="q3a6">No significant infrastructure challenges</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="question-slide" data-question="4">
+                <h2 class="question-title">How would you describe your approach to securing AI workloads?</h2>
+                <div class="answer-options">
+                    <div class="answer-option">
+                        <input type="radio" id="q4a1" name="q4" value="managed">
+                        <label for="q4a1">Relying on traditional security, no AI-specific measures</label>
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" id="q4a2" name="q4" value="managed">
+                        <label for="q4a2">Basic AI data protection but concerned about broader risks</label>
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" id="q4a3" name="q4" value="enterprise">
+                        <label for="q4a3">Using some AI security tools but lacking full integration</label>
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" id="q4a4" name="q4" value="enterprise">
+                        <label for="q4a4">Advanced security with AI workload monitoring</label>
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" id="q4a5" name="q4" value="diy">
+                        <label for="q4a5">Optimized AI security with integrated protection</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="question-slide" data-question="5">
+                <h2 class="question-title">What's your team's AI infrastructure expertise level?</h2>
+                <div class="answer-options">
+                    <div class="answer-option">
+                        <input type="radio" id="q5a1" name="q5" value="managed">
+                        <label for="q5a1">Limited expertise—reliant on external support</label>
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" id="q5a2" name="q5" value="managed">
+                        <label for="q5a2">Developing expertise but have resource constraints</label>
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" id="q5a3" name="q5" value="enterprise">
+                        <label for="q5a3">Moderate expertise but need specialized AI support</label>
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" id="q5a4" name="q5" value="enterprise">
+                        <label for="q5a4">Strong expertise but prioritizing strategic initiatives</label>
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" id="q5a5" name="q5" value="diy">
+                        <label for="q5a5">Expert team fully managing AI infrastructure lifecycle</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="question-slide" data-question="6">
+                <h2 class="question-title">What's your organization's approach to AI infrastructure investment?</h2>
+                <div class="answer-options">
+                    <div class="answer-option">
+                        <input type="radio" id="q6a1" name="q6" value="managed">
+                        <label for="q6a1">Evaluating AI infrastructure for business value/ROI</label>
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" id="q6a2" name="q6" value="managed">
+                        <label for="q6a2">Budget allocated but need to prove business impact</label>
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" id="q6a3" name="q6" value="enterprise">
+                        <label for="q6a3">Ready to invest but need a flexible cost model</label>
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" id="q6a4" name="q6" value="enterprise">
+                        <label for="q6a4">Committed budget with a defined AI transformation timeline</label>
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" id="q6a5" name="q6" value="diy">
+                        <label for="q6a5">AI infrastructure is a strategic priority with executive sponsorship</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 7 -->
+            <div class="question-slide" data-question="7">
+                <h2 class="question-title">What's your timeline for AI infrastructure deployment?</h2>
+                <div class="answer-options">
+                    <div class="answer-option">
+                        <input type="radio" id="q7a1" name="q7" value="diy">
+                        <label for="q7a1">6+ months - we can invest time in building the right foundation</label>
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" id="q7a2" name="q7" value="enterprise">
+                        <label for="q7a2">3-6 months - balanced approach between speed and customization</label>
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" id="q7a3" name="q7" value="managed">
+                        <label for="q7a3">30-90 days - need to get AI workloads running quickly</label>
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" id="q7a4" name="q7" value="managed">
+                        <label for="q7a4">Immediately - urgent business need with tight deadlines</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 8 -->
+            <div class="question-slide" data-question="8">
+                <h2 class="question-title">How important is infrastructure customization to your AI strategy?</h2>
+                <div class="answer-options">
+                    <div class="answer-option">
+                        <input type="radio" id="q8a1" name="q8" value="diy">
+                        <label for="q8a1">Critical - we need full control over configurations and optimizations</label>
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" id="q8a2" name="q8" value="enterprise">
+                        <label for="q8a2">Important - we need some customization within a managed framework</label>
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" id="q8a3" name="q8" value="managed">
+                        <label for="q8a3">Moderate - standard configurations are fine if they're optimized</label>
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" id="q8a4" name="q8" value="managed">
+                        <label for="q8a4">Low priority - we want infrastructure to be invisible to our team</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results -->
+            <div class="results-container" id="resultsContainer">
+                <div class="score-circle" id="scoreCircle">0.0</div>
+                <h2 class="result-title" id="resultTitle"></h2>
+                <p class="result-description" id="resultDescription"></p>
+                
+                <!-- Recommendations Section -->
+                <div class="recommendations-section">
+                    <h3 class="recommendations-title">Your Recommended Infrastructure Strategy</h3>
+                    <ul class="recommendations-list" id="recommendationsList">
+                        <!-- Recommendations will be populated by JavaScript -->
+                    </ul>
+                </div>
+                
+                <!-- Next Steps -->
+                <div class="benchmark-section">
+                    <div class="benchmark-header">
+                        <span style="font-size: 1.5rem;">🎯</span>
+                        <h4 class="benchmark-title">Recommended Next Steps</h4>
+                    </div>
+                    <p class="benchmark-text" id="nextStepsText"></p>
+                </div>
+                
+                <button class="show-form-button" onclick="showLeadForm()">Get Your Detailed Infrastructure Strategy Guide</button>
+            </div>
+
+            <!-- Lead Form -->
+            <div class="lead-form" id="leadForm">
+                <h3 class="form-title">Get Your Complete Infrastructure Strategy Guide</h3>
+                <p class="form-subtitle">Receive a detailed analysis of your infrastructure assessment, customized recommendations, and a 30-minute strategy consultation with our infrastructure experts.</p>
+                
+                <form id="leadCaptureForm" onsubmit="handleFormSubmit(event)">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name *</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Company Name *</label>
+                            <input type="text" id="company" name="company" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="title">Job Title *</label>
+                            <select id="title" name="title" required>
+                                <option value="">Select your title</option>
+                                <option value="CIO">Chief Information Officer (CIO)</option>
+                                <option value="CTO">Chief Technology Officer (CTO)</option>
+                                <option value="CISO">Chief Information Security Officer (CISO)</option>
+                                <option value="Head of AI">Head of AI</option>
+                                <option value="Director of Infrastructure">Director of Infrastructure</option>
+                                <option value="IT Director">IT Director</option>
+                                <option value="VP of Technology">VP of Technology</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="cta-button">Schedule My Infrastructure Strategy Session</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
